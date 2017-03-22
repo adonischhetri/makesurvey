@@ -31,6 +31,12 @@
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/" />
 		<property name="suffix" value=".jsp" />
+		<property name="order" value="2" />
+	</bean>
+	
+	<bean id="tilesViewResolver"   class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView" />
+        <property name="order" value="1" />
 	</bean>
 
 	<context:component-scan base-package="com.coderovers.makesurvey" />
@@ -60,7 +66,7 @@
 		class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
 		<property name="definitions">
 			<list>
-				<value>/WEB-INF/tiles/definitions/tile-definition.xml</value>
+				<value>tiles/definitions/tile-definition.xml</value>
 			</list>
 		</property>
 	</bean>
