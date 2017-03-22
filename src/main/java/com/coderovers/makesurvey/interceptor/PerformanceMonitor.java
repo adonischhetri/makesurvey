@@ -18,7 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 public class PerformanceMonitor implements HandlerInterceptor {
 
-	ThreadLocal<StopWatch> stopWatchLocal = new ThreadLocal<>();
+	ThreadLocal<StopWatch> stopWatchLocal = new ThreadLocal<StopWatch>();
 	Logger logger = Logger.getLogger(this.getClass());
 
 	@Override
