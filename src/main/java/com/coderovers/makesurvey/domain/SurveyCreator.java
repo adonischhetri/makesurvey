@@ -22,7 +22,7 @@ public class SurveyCreator extends User {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "surveyCreator")
 	private List<Survey> surveys = new ArrayList<Survey>();
 
 	public List<Survey> getSurveys() {

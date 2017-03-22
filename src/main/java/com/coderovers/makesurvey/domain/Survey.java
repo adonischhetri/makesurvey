@@ -10,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -22,28 +23,32 @@ import com.coderovers.makesurvey.domain.question.Question;
  */
 @Entity
 public class Survey implements Serializable {
-	
+
 	private static final long serialVersionUID = -4937866292277419840L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	private String title;
 	private String description;
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date added_date;
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	@Future
 	private Date expiry_date;
 	private boolean visibility;
-	
+
+	@ManyToOne()
+	private SurveyCreator surveyCreator;
+
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Question> questions;
 
-	Survey() {}
+	Survey() {
+	}
 
 	public Long getId() {
 		return id;
@@ -138,5 +143,5 @@ public class Survey implements Serializable {
 			return false;
 		return true;
 	}
-	
+
 }
