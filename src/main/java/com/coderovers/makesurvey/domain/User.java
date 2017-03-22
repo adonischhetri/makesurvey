@@ -17,11 +17,15 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlTransient;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * @author Manish Karki
@@ -29,34 +33,37 @@ import org.hibernate.validator.constraints.NotEmpty;
  */
 
 @Entity
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE) //Least normalisation strategy
-@DiscriminatorColumn(
-  name="User_Type", 
-  discriminatorType=DiscriminatorType.STRING
-  )
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE) // Least normalisation
+														// strategy
+@DiscriminatorColumn(name = "User_Type", discriminatorType = DiscriminatorType.STRING)
 
 public class User implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	@NotEmpty(message = "{nonEmpty}")
+	@NotEmpty
+	@Size(min = 4, max = 25, message = "{User.firstName.required}")
 	private String firstName;
 	private String middleName;
-	@NotEmpty
+	@NotEmpty(message = "{User.firstName.required}")
 	private String lastName;
-	@NotEmpty(message = "{required}")
-	@Email(message = "{valid.email}")
+	@NotEmpty
+	@Email(message = "{User.email.required}")
 	private String email;
-	@Size(min = 5, max = 14, message = "{requiredSize}")
+	@Size(min = 5, max = 14, message = "{User.userName.required}")
 	private String userName;
 	@NotEmpty(message = "{required}")
-	@Size(min = 5, max = 60, message = "{requiredSize}")
+	@Size(min = 5, max = 60, message = "{User.password.required}")
 	private String password;
+
+	@Transient
+	private String confirmPassword;
+
+	@JsonIgnore
+	@Transient
+	private MultipartFile profileImage;
 
 	private int enabled = 1;
 
@@ -121,6 +128,23 @@ public class User implements Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
+	}
+
+	@XmlTransient
+	public MultipartFile getProfileImage() {
+		return profileImage;
+	}
+
+	public void setProfileImage(MultipartFile profileImage) {
+		this.profileImage = profileImage;
 	}
 
 	public int getEnabled() {

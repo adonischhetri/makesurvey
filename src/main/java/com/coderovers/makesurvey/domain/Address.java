@@ -28,7 +28,7 @@ public class Address implements Serializable {
 	private String state;
 	private String zip;
 
-	Address() {
+	public Address() {
 	}
 
 	public String getStreet() {
