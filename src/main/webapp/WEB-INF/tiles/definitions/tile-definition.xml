@@ -25,11 +25,11 @@
 		<put-attribute name="body" value="/WEB-INF/views/signup.jsp" />
 	</definition>
 	
-	<definition name="product" extends="baseLayout">
-		<put-attribute name="title" value="Product" />
-		<put-attribute name="heading" value="Products" />
-		<put-attribute name="tagline" value="Product" />
-		<put-attribute name="body" value="/WEB-INF/views/product.jsp" />
+	<definition name="surveyCreatorHome" extends="baseLayout">
+		<put-attribute name="title" value="MakeSurvey/Welcome" />
+		<put-attribute name="heading" value="MakeSurvey" />
+		<put-attribute name="tagline" value="MakeSurvey" />
+		<put-attribute name="body" value="/WEB-INF/views/surveyCreator.jsp" />
 	</definition>
 	
 	<definition name="addProduct" extends="baseLayout">

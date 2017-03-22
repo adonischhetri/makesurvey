@@ -9,37 +9,35 @@
 
 	<security:global-method-security
 		pre-post-annotations="enabled" />
-	<security:http use-expressions="true">
-		<security:intercept-url pattern="/users/**"
-			access="hasRole('ROLE_ADMIN')" />
-		<security:intercept-url pattern="/useredit/**"
-			access="hasAnyRole('ROLE_ADMIN','ROLE_CUSTOMER')" />
-		<security:intercept-url pattern="/account"
-			access="hasAnyRole('ROLE_ADMIN','ROLE_CUSTOMER')" />
-			<security:intercept-url pattern="/survey**"
-			access="hasAnyRole('ROLE_ADMIN','ROLE_CUSTOMER')" />
+	<security:http use-expressions="true" auto-config="true">
+		<!-- <security:intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
+		<security:access-denied-handler error-page="/admin/generalerror" /> -->
+		
+	<!-- 	<security:intercept-url pattern="/add/offer" access="isAuthenticated()" />
+		 -->
 
 		<security:form-login login-page="/login"
-			login-processing-url="/postLogin" username-parameter="username"
-			password-parameter="password" default-target-url="/index"
-			always-use-default-target="true" authentication-failure-url="/loginFailed" />
-		<security:logout logout-success-url="/logout"
-			delete-cookies="JSESSIONID" logout-url="/doLogout" />
-		<security:remember-me data-source-ref="dataSource"
-			token-validity-seconds="86400" remember-me-parameter="keepMe" />
+			default-target-url="/dashboard" authentication-failure-url="/login?error"
+			username-parameter="username" password-parameter="password" />
+		<security:logout logout-success-url="/login?logout"
+			delete-cookies="JSESSIONID" />
+		<security:csrf />
+
+
+
 	</security:http>
+
 	<bean id="encoder"
 		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
 		<constructor-arg value="12"></constructor-arg>
 	</bean>
-	<security:authentication-manager>
-		<security:authentication-provider>
-			<security:password-encoder ref="encoder" />
-			<security:jdbc-user-service
-				data-source-ref="dataSource"
-				users-by-username-query="select username,password,enabled from user where username=?"
-				authorities-by-username-query="select u1.username, u1.hasRole from user u1 where u1.username =?" />
+	<security:authentication-manager alias="authenticationManager">
+		<security:authentication-provider
+			user-service-ref="userDetailsService">
+			<security:password-encoder ref="encoder"></security:password-encoder>
 		</security:authentication-provider>
-
 	</security:authentication-manager>
+
+	<bean id="userDetailsService" class="com.coderovers.makesurvey.serviceimpl.UserDetailsServiceImpl"></bean>
+
 </beans>

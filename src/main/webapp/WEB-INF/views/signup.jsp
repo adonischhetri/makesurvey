@@ -16,7 +16,7 @@
 
 		<form:form modelAttribute="newUser" class="form-horizontal" enctype="multipart/form-data">
 			<fieldset>
-				<legend>New Signup</legend>
+				<legend>User Signup</legend>
 
 				<form:errors path="*" cssClass="alert alert-danger" element="div" />
 				<div class="form-group">

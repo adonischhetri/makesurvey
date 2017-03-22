@@ -8,20 +8,27 @@ import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.coderovers.makesurvey.domain.SurveyCreator;
 import com.coderovers.makesurvey.domain.User;
+import com.coderovers.makesurvey.service.UserService;
 
 /**
  * Handles requests for the application home page.
  */
 @Controller
 public class HomeController {
+
+	@Autowired
+	private UserService userService;
 
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
@@ -48,8 +55,24 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
-	public String register(@Valid @ModelAttribute("newUser") User user, BindingResult result) {
-		return "signup";
+	public String register(@Valid @ModelAttribute("newUser") SurveyCreator surveyCreator, BindingResult result,
+			RedirectAttributes redirectAttributes) {
+		if (result.hasErrors()){
+			System.out.println("Error");
+			return "signup";
+		}
+		System.out.println("No error");
+		userService.save(surveyCreator);
+		redirectAttributes.addFlashAttribute("surveyCreator", surveyCreator);
+		return "redirect:/success";
 	}
+
+	@RequestMapping(value = "/success", method = RequestMethod.GET)
+	public String success() {
+		System.out.println("inside success");
+		return "login";
+	}
+	
+	
 
 }
