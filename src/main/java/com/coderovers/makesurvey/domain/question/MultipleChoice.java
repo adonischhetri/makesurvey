@@ -21,7 +21,6 @@ public class MultipleChoice extends Choice {
 	private static final long serialVersionUID = 4635214526972041047L;
 
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@Column(name = "option_id")
 	private List<Option> options;
 
 	MultipleChoice() {

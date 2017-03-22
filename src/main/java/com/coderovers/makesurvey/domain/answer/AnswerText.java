@@ -2,6 +2,7 @@ package com.coderovers.makesurvey.domain.answer;
 
 import java.io.Serializable;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 /**
@@ -10,6 +11,7 @@ import javax.persistence.Entity;
 */
 
 @Entity
+@DiscriminatorValue("Answer_Text")
 public class AnswerText extends Response implements Serializable {
 
 	
