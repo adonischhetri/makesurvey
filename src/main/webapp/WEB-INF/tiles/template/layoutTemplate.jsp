@@ -17,6 +17,8 @@
 
 <link href="http://getbootstrap.com/examples/jumbotron/jumbotron.css"	rel="stylesheet">
 
+<!-- <link href="resources/css/survey.css"	rel="stylesheet"> -->
+
 </head>
 
 <body>
@@ -26,7 +28,7 @@
 			<ul class="nav nav-pills pull-right">
 				<tiles:insertAttribute name="navigation" />
 			</ul>
-			<h3 class="text-muted">Web Store</h3>
+			<h3 class="text-muted">MakeSurvey</h3>
 		</div>
 
 

@@ -5,7 +5,7 @@
 <tiles-definitions>
 	
 	<definition name="baseLayout" template="/WEB-INF/tiles/template/layoutTemplate.jsp">
-		<put-attribute name="title" value="Sample Title" />
+		<put-attribute name="title" value="MakeSurvey" />
 		<put-attribute name="heading" value="" />
 		<put-attribute name="tagline" value="" />
  		<put-attribute name="navigation" value="/WEB-INF/tiles/template/navigation.jsp" />
@@ -14,16 +14,15 @@
 	</definition>
 
  	<definition name="welcome" extends="baseLayout">
-		<put-attribute name="title" value="Welcome" />
-		<put-attribute name="heading" value="Internationalization" />
- 		<put-attribute name="body" value="/WEB-INF/views/welcome.jsp" />
+		<put-attribute name="title" value="MakeSurvey" />
+		<put-attribute name="heading" value="MakeSurvey" />
+ 		<put-attribute name="body" value="/WEB-INF/views/home.jsp" />
 	</definition>
 	
-	<definition name="products" extends="baseLayout">
-		<put-attribute name="title" value="Products" />
-		<put-attribute name="heading" value="Products" />
-		<put-attribute name="tagline" value="Available Products" />
-		<put-attribute name="body" value="/WEB-INF/views/products.jsp" />
+	<definition name="signup" extends="baseLayout">
+		<put-attribute name="title" value="Signup" />
+		<put-attribute name="heading" value="Signup" />
+		<put-attribute name="body" value="/WEB-INF/views/signup.jsp" />
 	</definition>
 	
 	<definition name="product" extends="baseLayout">
