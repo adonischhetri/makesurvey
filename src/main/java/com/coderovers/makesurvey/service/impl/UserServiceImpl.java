@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,6 +29,9 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private RolesRepository roleRepository;
 	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+	
 	@Override
 	public void save(User user) {
 		userRepository.save(user);
@@ -45,6 +49,7 @@ public class UserServiceImpl implements UserService {
 		Set<Roles> roleSet = new HashSet<Roles>();
 		//System.out.println("role:"+roleRepository.findByType("CREATOR").getType());
 		//roleSet.add(roleRepository.findByType("CREATOR"));
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		user.setRoles(roleSet);
 		userRepository.save(user);
 	}

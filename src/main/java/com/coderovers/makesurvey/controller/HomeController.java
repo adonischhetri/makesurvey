@@ -70,7 +70,7 @@ public class HomeController {
 		return "redirect:/success";
 	}
 
-	@RequestMapping(value = "/success", method = RequestMethod.GET)
+	@RequestMapping(value = {"/success","/login"}, method = RequestMethod.GET)
 	public String success() {
 		System.out.println("inside success");
 		return "login";

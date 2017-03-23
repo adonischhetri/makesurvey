@@ -17,7 +17,7 @@
 						<a href="<c:url value="/signup"/>"
 							class="btn btn-link btn-block">
 							<spring:message code="label.registrationForm.title"
-								text="Registrtion Now" />
+								text="Registration Now" />
 						</a>
 
 						<c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION}">
@@ -26,7 +26,7 @@
 									text="Bad credentils. Please try again."></spring:message>
 							</div>
 						</c:if>
-						<form action="<c:url value='j_spring_security_check' />"
+						<form action="<c:url value='/login' />"
 							method="POST" role="form">
 							<div class="form-group">
 								<input type="text" class="form-control" name="username"
