@@ -19,7 +19,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.coderovers.makesurvey.domain.SurveyCreator;
 import com.coderovers.makesurvey.domain.User;
+import com.coderovers.makesurvey.service.SecurityService;
 import com.coderovers.makesurvey.service.UserService;
+
 
 /**
  * Handles requests for the application home page.
@@ -29,6 +31,8 @@ public class HomeController {
 
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private SecurityService securityService;
 
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
@@ -58,11 +62,10 @@ public class HomeController {
 	public String register(@Valid @ModelAttribute("newUser") SurveyCreator surveyCreator, BindingResult result,
 			RedirectAttributes redirectAttributes) {
 		if (result.hasErrors()){
-			System.out.println("Error");
+			System.out.println("No error");
 			return "signup";
 		}
-		System.out.println("No error");
-		userService.save(surveyCreator);
+		userService.register(surveyCreator);
 		redirectAttributes.addFlashAttribute("surveyCreator", surveyCreator);
 		return "redirect:/success";
 	}

@@ -14,7 +14,7 @@
 
 	<section class="container">
 
-		<form:form modelAttribute="newUser" class="form-horizontal" enctype="multipart/form-data">
+		<form:form action="" modelAttribute="newUser" class="form-horizontal" role = "form" >
 			<fieldset>
 				<legend>User Signup</legend>
 
@@ -68,7 +68,7 @@
 					<label class="control-label col-lg-2 col-lg-2" for="productId">
 					<spring:message code="Signup.user.password.label" text="First Name" /></label>
 					<div class="col-lg-10">
-						<form:input id="password" path="password" type="text" class="form:input-large" />
+						<form:input id="password" path="password" type="password" class="form:input-large" />
 						<form:errors path="password" cssClass="text-danger" />
 					</div>
 				</div>
@@ -77,18 +77,18 @@
 					<label class="control-label col-lg-2 col-lg-2" for="confirmPassword">
 					<spring:message code="Signup.user.confirmPassword.label"  text="First Name"/></label>
 					<div class="col-lg-10">
-						<form:input id="confirmPassword" path="confirmPassword" type="text" class="form:input-large" />
+						<form:input id="confirmPassword" path="confirmPassword" type="password" class="form:input-large" />
 						<form:errors path="confirmPassword" cssClass="text-danger" />
 					</div>
 				</div>
 
-				<div class="form-group">
+				<%-- <div class="form-group">
 					<label class="control-label col-lg-2" for="profileImage"> <spring:message
 							code="Signup.user.profileImage.label" /></label>
 					<div class="col-lg-10">
 						<form:input id="profileImage" path="profileImage" type="file" class="form:input-large" />
 					</div>
-				</div>
+				</div> --%>
 				
 				<hr />
 				

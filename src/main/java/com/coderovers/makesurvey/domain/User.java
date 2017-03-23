@@ -71,7 +71,8 @@ public class User implements Serializable {
 	@JoinTable(joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Roles> roles;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "location_id")
 	private Address address;
 
 	public Long getId() {
