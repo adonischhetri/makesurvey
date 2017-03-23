@@ -25,18 +25,11 @@
 		<put-attribute name="body" value="/WEB-INF/views/signup.jsp" />
 	</definition>
 	
-	<definition name="surveyCreatorHome" extends="baseLayout">
+	<definition name="dashboard" extends="baseLayout">
 		<put-attribute name="title" value="MakeSurvey/Welcome" />
 		<put-attribute name="heading" value="MakeSurvey" />
 		<put-attribute name="tagline" value="MakeSurvey" />
-		<put-attribute name="body" value="/WEB-INF/views/surveyCreator.jsp" />
-	</definition>
-	
-	<definition name="addProduct" extends="baseLayout">
-		<put-attribute name="title" value="Products" />
-		<put-attribute name="heading" value="Products" />
-		<put-attribute name="tagline" value="Product" />
-		<put-attribute name="body" value="/WEB-INF/views/addProduct.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/survey/dashboard.jsp" />
 	</definition>
 	
 	<definition name="login" extends="baseLayout">
@@ -44,18 +37,6 @@
 		<put-attribute name="heading" value="Login" />
 		<put-attribute name="tagline" value="Enter your Credentials" />
 		<put-attribute name="body" value="/WEB-INF/views/login.jsp" />
-	</definition>
-	
-	<definition name="cart" extends="baseLayout">
-		<put-attribute name="title" value="Shopping Cart" />
-		<put-attribute name="heading" value="Cart" />
-		<put-attribute name="tagline" value="your shopping cart" />
-		<put-attribute name="body" value="/WEB-INF/views/cart.jsp" />
-	</definition>
-	 	
-	<definition name="productNotFound" extends="baseLayout">
-		<put-attribute name="title" value="Product Exception" />
- 		<put-attribute name="body" value="/WEB-INF/views/productNotFound.jsp" />
 	</definition>
 	 	
 </tiles-definitions>

@@ -20,13 +20,13 @@
 								text="Registration Now" />
 						</a>
 
-						<c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION}">
+						<c:if test="${not empty error}">
 							<div class="alert alert-danger" role="alert">
 								<spring:message code="message.login.badCredentials"
 									text="Bad credentils. Please try again."></spring:message>
 							</div>
 						</c:if>
-						<form action="<c:url value='/login' />"
+						<form action="<c:url value='/postLogin' />"
 							method="POST" role="form">
 							<div class="form-group">
 								<input type="text" class="form-control" name="username"

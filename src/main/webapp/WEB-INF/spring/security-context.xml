@@ -7,20 +7,27 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<security:global-method-security
-		pre-post-annotations="enabled" />
+	<security:global-method-security pre-post-annotations="enabled" />
 	<security:http use-expressions="true" auto-config="true">
 		<!-- <security:intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
 		<security:access-denied-handler error-page="/admin/generalerror" /> -->
 		
 	<!-- 	<security:intercept-url pattern="/add/offer" access="isAuthenticated()" />
 		 -->
+		 
+	    <!-- <security:intercept-url pattern="/dashboard" access="hasAnyRole('ROLE_ADMIN1')"  /> -->
+	    <security:intercept-url pattern="/dashboard" access="hasAnyRole('ROLE_ADMIN')"  />
 
-		<security:form-login login-page="/login"
-			default-target-url="/dashboard" authentication-failure-url="/login?error"
-			username-parameter="username" password-parameter="password" />
-		<security:logout logout-success-url="/login?logout"
-			delete-cookies="JSESSIONID" />
+		<security:form-login 
+ 		 login-page="/login" 
+				login-processing-url="/postLogin"
+				username-parameter="username" 
+				password-parameter="password"
+ 			    default-target-url="/dashboard"    
+               always-use-default-target="true"   
+               authentication-failure-url="/loginfailed"/>
+		<security:logout logout-success-url="/logout" 
+          delete-cookies="JSESSIONID" />
 		<security:csrf />
 
 
@@ -31,6 +38,7 @@
 		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
 		<constructor-arg value="12"></constructor-arg>
 	</bean>
+
 	<security:authentication-manager alias="authenticationManager">
 		<security:authentication-provider
 			user-service-ref="userDetailsService">
@@ -39,5 +47,5 @@
 	</security:authentication-manager>
 
 	<bean id="userDetailsService" class="com.coderovers.makesurvey.serviceimpl.UserDetailsServiceImpl"></bean>
-
+ 
 </beans>

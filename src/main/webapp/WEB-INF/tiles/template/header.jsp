@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
-
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 
 <link href="http://getbootstrap.com/examples/jumbotron/jumbotron.css" rel="stylesheet">
 
@@ -10,5 +10,9 @@
 	</h1>
 	<p>
 		<tiles:insertAttribute name="tagline" />
+		&nbsp; <security:authorize access="isAuthenticated()">
+  					Welcome  <security:authentication property="principal.username" />, &nbsp; 
+  					<a href="<spring:url  value="/doLogout" />">Logout</a>
+				</security:authorize>
 	</p>
 </div>
