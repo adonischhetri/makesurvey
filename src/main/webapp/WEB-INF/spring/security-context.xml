@@ -16,7 +16,7 @@
 		 -->
 		 
 	    <!-- <security:intercept-url pattern="/dashboard" access="hasAnyRole('ROLE_ADMIN1')"  /> -->
-	    <security:intercept-url pattern="/dashboard" access="hasAnyRole('ROLE_ADMIN')"  />
+	    <security:intercept-url pattern="/dashboard" access="hasAnyRole('ROLE_CREATOR')"  />
 
 		<security:form-login 
  		 login-page="/login" 

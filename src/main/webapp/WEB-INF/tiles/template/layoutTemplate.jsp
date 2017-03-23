@@ -19,6 +19,8 @@
 
 <!-- <link href="resources/css/survey.css"	rel="stylesheet"> -->
 
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+
 </head>
 
 <body>
@@ -50,5 +52,7 @@
 		</div>
 
 	</div>
+	<script type="text/javascript" src="<spring:url value="/resources/scripts/ajax.js"/>"></script>
+	
 </body>
 </html>

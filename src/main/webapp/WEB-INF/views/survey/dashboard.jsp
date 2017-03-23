@@ -4,7 +4,7 @@
 <%@ taglib prefix="security"
 	uri="http://www.springframework.org/security/tags"%>
 
-Dashboard
+ Creator Dashboard
 <security:authorize access="isAuthenticated()">
   					Welcome  <security:authentication property="principal.username" />, &nbsp; 
   					<c:url var="logoutUrl" value="/j_spring_security_logout" />
@@ -13,5 +13,7 @@ Dashboard
 		<input type="hidden" name="${_csrf.parameterName}"
 			value="${_csrf.token}" />
 	</form:form>
+	
+	<a href ="<c:url value="/survey/create" />"> create survey</a>
 
 </security:authorize>

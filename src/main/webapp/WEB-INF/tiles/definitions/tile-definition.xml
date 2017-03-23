@@ -38,5 +38,12 @@
 		<put-attribute name="tagline" value="Enter your Credentials" />
 		<put-attribute name="body" value="/WEB-INF/views/login.jsp" />
 	</definition>
+	
+	<definition name="survey" extends="baseLayout">
+		<put-attribute name="title" value="Survey" />
+		<put-attribute name="heading" value="Create New Survey" />
+		<put-attribute name="tagline" value="Create Survey" />
+		<put-attribute name="body" value="/WEB-INF/views/survey/survey.jsp" />
+	</definition>
 	 	
 </tiles-definitions>

@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.coderovers.makesurvey.domain.Survey;
@@ -22,6 +25,7 @@ import com.coderovers.makesurvey.service.SurveyService;
 
 @Controller
 @RequestMapping("/survey")
+@SessionAttributes("questions")
 public class SurveyController {
 
 	@Autowired
@@ -30,6 +34,19 @@ public class SurveyController {
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
 	public String createSurvey(@ModelAttribute("survey") Survey survey) {
 		return "survey";
+	}
+	
+	@RequestMapping(value = "/addQuestion", method = RequestMethod.GET)
+	public @ResponseBody String addQuestion(@RequestParam("questionType") String questionType, @RequestParam("question") String question, Model model){
+		
+		if(questionType.equals("0")){
+			
+		}else{
+			
+		}
+		
+		//save to session....
+		return "1";
 	}
 
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
