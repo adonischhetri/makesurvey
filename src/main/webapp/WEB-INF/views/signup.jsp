@@ -6,7 +6,7 @@
 	<section>
 		<div class="jumbotron">
 			<div class="pull-right" style="padding-right: 50px">
-				<a href="?language=en_US">English</a>|<a href="?language=NL">Nepali</a>
+				<a href="?language=en_US">English</a>|<a href="?language=nl_NP">Nepali</a>
 			</div>
 
 		</div>
@@ -17,7 +17,7 @@
 		<form:form action="" modelAttribute="newUser" class="form-horizontal" role = "form" >
 			<fieldset>
 				<legend>User Signup</legend>
-
+				<p style="display:none;"> Current Locale : ${pageContext.response.locale}</p>
 				<form:errors path="*" cssClass="alert alert-danger" element="div" />
 				<div class="form-group">
 					<label class="control-label col-lg-2 col-lg-2" for="productId">

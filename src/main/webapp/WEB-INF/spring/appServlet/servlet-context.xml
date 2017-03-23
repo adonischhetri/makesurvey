@@ -19,11 +19,37 @@
 		infrastructure -->
 
 	<!-- Enables the Spring MVC @Controller programming model -->
-	<mvc:annotation-driven />
+	<mvc:annotation-driven  validator="validator"/>
+	
+	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+		<property name="validationMessageSource" ref="messageSource" />
+	</bean>
+	<context:component-scan base-package="com.coderovers.makesurvey" />
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving 
 		up static resources in the ${webappRoot}/resources directory -->
 	<mvc:resources mapping="/resources/**" location="/resources/" />
+	
+	<!-- Internationalization -->
+	<!-- Register the messages.properties -->
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames" value="messages, errorMessages" />
+		<property name="defaultEncoding" value="UTF-8" />
+	</bean>
+
+	<mvc:interceptors>
+ 		<bean class= "org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+			<property name="paramName" value="language"/>
+	 	</bean>	 	
+ 	</mvc:interceptors>
+ 	
+	<bean id="localeResolver"
+		class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+		<property name="defaultLocale" value="en_US" />
+	</bean>
+
+	
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
 		in the /WEB-INF/views directory -->
@@ -40,8 +66,6 @@
 			value="org.springframework.web.servlet.view.tiles3.TilesView" />
 		<property name="order" value="1" />
 	</bean>
-
-	<context:component-scan base-package="com.coderovers.makesurvey" />
 
 	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
 		<property name="host" value="smtp.gmail.com" />
@@ -69,31 +93,6 @@
 		<property name="templateMessage" ref="templateMessage" />
 	</bean>
 
-	<bean id="messageSource"
-		class="org.springframework.context.support.ResourceBundleMessageSource">
-		<property name="basenames" value="errorMessages, messages" />
-		<property name="defaultEncoding" value="UTF-8" />
-	</bean>
-
-	<bean id="messageAccessor"
-		class="org.springframework.context.support.MessageSourceAccessor">
-		<constructor-arg ref="messageSource" />
-	</bean>
-
-	<!-- Used to handle Cookie or Session locale resolvers AUTOMATICALLY -->
-	<mvc:interceptors>
-		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
-			<property name="paramName" value="language" />
-		</bean>
-	</mvc:interceptors>
-
-	<!-- name="paramName" value="language this is the parameter that the interceptor 
-		looks for -->
-	<bean id="localeResolver"
-		class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
-		<property name="defaultLocale" value="en_US" />
-	</bean>
-	
 	<bean id="commonMultipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="maxUploadSize" value="100000000" />
@@ -106,6 +105,11 @@
 				<value>WEB-INF/tiles/definitions/tile-definition.xml</value>
 			</list>
 		</property>
+	</bean>
+
+	<bean id="messageAccessor"
+		class="org.springframework.context.support.MessageSourceAccessor">
+		<constructor-arg ref="messageSource" />
 	</bean>
 
 </beans>
