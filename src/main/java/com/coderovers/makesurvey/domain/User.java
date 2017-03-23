@@ -18,6 +18,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Transient;
+import javax.validation.Valid;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -47,7 +48,7 @@ public class User implements Serializable {
 	@Size(min = 4, max = 25, message = "{User.firstName.required}")
 	private String firstName;
 	private String middleName;
-	@NotEmpty(message = "{User.firstName.required}")
+	@NotEmpty(message = "{User.lastName.required}")
 	private String lastName;
 	@NotEmpty
 	@Email(message = "{User.email.required}")
@@ -73,6 +74,7 @@ public class User implements Serializable {
 
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "location_id")
+	@Valid
 	private Address address;
 
 	public Long getId() {

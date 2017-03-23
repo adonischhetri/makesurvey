@@ -16,9 +16,9 @@
 
 		<form:form action="" modelAttribute="newUser" class="form-horizontal" role = "form" >
 			<fieldset>
-				<legend>User Signup</legend>
+				<legend><spring:message code="User.Signup" text="User Signup" /></legend>
 				<p style="display:none;"> Current Locale : ${pageContext.response.locale}</p>
-				<form:errors path="*" cssClass="alert alert-danger" element="div" />
+				<%-- <form:errors path="*" cssClass="alert alert-danger" element="div" /> --%>
 				<div class="form-group">
 					<label class="control-label col-lg-2 col-lg-2" for="productId">
 					<spring:message code="Signup.user.firstName.label" text="First Name" /></label>
@@ -92,7 +92,7 @@
 				
 				<hr />
 				
-				<h3>Enter Current Address</h3>
+				<h3><spring:message code="Current.Address" text = "Enter current address" /></h3>
 				
 				<div class="form-group">
 					<label class="control-label col-lg-2 col-lg-2" for="productId">
