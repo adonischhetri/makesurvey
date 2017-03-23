@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+							http://www.springframework.org/schema/webflow/spring-webflow.xsd">
+
+<!-- Flow level variable definition SO flow scope -->
+	<var name="survey" class="com.coderovers.makesurvey.domain.Survey" />
+
+<!-- First "state" listed is first executed - unless <on-start> -->
+	<action-state id="addAnswerToSurvey">
+<!-- 	requestParameters.
+ -->		<evaluate expression="surveyControllerHelper.validateCart(requestParameters.cartId)"
+			result="order.cart" />
+		<transition to="collectCustomerInfo" />
+		<transition to="InvalidCartWarning"
+			on-exception="com.packt.webstore.exception.InvalidCartException" />		
+	</action-state>
+
+	<view-state id="collectCustomerInfo" view="collectCustomerInfo.jsp" model="survey">
+		<transition on="customerInfoCollected" to="collectSurveyDetail" />
+		<transition on="surveyCancelled" to="cancelSurvey" validate= "false"/>
+	</view-state>
+
+	<view-state id="collectSurveyDetail" model="survey">
+		<transition on="surveyDetailCollected" to="surveyConfirmation" />
+		<transition on="backToCollectCustomerInfo" to="collectCustomerInfo" />
+	</view-state>
+
+	<view-state id="surveyConfirmation">
+		<transition on="surveyConfirmed" to="processOrder" />
+		<transition on="backToCollectSurveyDetail" to="collectSurveyDetail" />
+	</view-state>
+	
+	<!-- result="order.orderId" saves result of expression -->
+	<action-state id="processSurvey">
+		<evaluate expression="surveyControllerHelper.saveSurvey(order)" result="survey.surveyId"/>
+		<transition to="thankSurveyTaker" />
+	</action-state>
+	
+	<view-state id="InvalidSurveyWarning">
+		<transition to="endState"/>
+	</view-state>
+	
+	<view-state id="thankSurveyTaker" model="survey">
+		<transition to="endState"/>
+	</view-state>
+
+	<end-state id="endState"/>	
+
+	<end-state id="cancelSurvey" view = "surveyCancelled.jsp"/>		
+	
+	<global-transitions>
+		<transition on = "cancel" to="endState" />
+	</global-transitions>
+
+</flow>
