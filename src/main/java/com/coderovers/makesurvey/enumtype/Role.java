@@ -6,5 +6,14 @@ package com.coderovers.makesurvey.enumtype;
  */
 
 public enum Role {
-	ROLE_ADMIN, ROLE_INVENTORY_MANAGER, ROLE_CUSTOMER;
+	CREATOR("CREATOR"), ADMIN("ADMIN");
+	String role;
+
+	private Role(String role) {
+		this.role = role;
+	}
+
+	public String getRole() {
+		return role;
+	}
 }

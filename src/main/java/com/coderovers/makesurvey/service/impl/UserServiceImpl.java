@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.coderovers.makesurvey.domain.Roles;
 import com.coderovers.makesurvey.domain.User;
-import com.coderovers.makesurvey.enumtype.Role;
 import com.coderovers.makesurvey.repository.RolesRepository;
 import com.coderovers.makesurvey.repository.UserRepository;
 import com.coderovers.makesurvey.service.UserService;
@@ -44,9 +43,10 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void register(User user) {
 		Set<Roles> roleSet = new HashSet<Roles>();
-		roleSet.add(roleRepository.findByRole(Role.ROLE_ADMIN));
+		//System.out.println("role:"+roleRepository.findByType("CREATOR").getType());
+		//roleSet.add(roleRepository.findByType("CREATOR"));
 		user.setRoles(roleSet);
-		this.save(user);
+		userRepository.save(user);
 	}
 
 }

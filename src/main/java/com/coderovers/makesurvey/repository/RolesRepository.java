@@ -4,7 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.coderovers.makesurvey.domain.Roles;
-import com.coderovers.makesurvey.enumtype.Role;
 
 /**
  * @author Manish Karki
@@ -12,8 +11,8 @@ import com.coderovers.makesurvey.enumtype.Role;
  */
 
 @Repository
-public interface RolesRepository extends JpaRepository<Roles, Long> {
+public interface RolesRepository extends JpaRepository<Roles, Integer> {
 	
-	Roles findByRole(Role role);
+	Roles findByType(String type);
 
 }

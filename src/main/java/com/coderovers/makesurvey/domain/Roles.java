@@ -1,18 +1,14 @@
 package com.coderovers.makesurvey.domain;
 
 import java.io.Serializable;
-import java.util.Set;
 
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 
 import com.coderovers.makesurvey.enumtype.Role;
+
 
 /**
  * @author Manish Karki
@@ -27,14 +23,10 @@ public class Roles implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer userRoleId;
 	
-	@ManyToMany(mappedBy = "roles",fetch = FetchType.LAZY)
-    private Set<User> users;
-	
-	@Enumerated(EnumType.STRING)
-	private Role role;
+	private String type = Role.CREATOR.getRole();
 
 	public Integer getUserRoleId() {
 		return userRoleId;
@@ -44,19 +36,10 @@ public class Roles implements Serializable{
 		this.userRoleId = userRoleId;
 	}
 
-	public Set<User> getUsers() {
-		return users;
+	public String getType() {
+		return type;
 	}
-
-	public void setUsers(Set<User> users) {
-		this.users = users;
-	}
-
-	public Role getRole() {
-		return role;
-	}
-
-	public void setRole(Role role) {
-		this.role = role;
+	public void setType(String type) {
+		this.type = type;
 	}
 }
