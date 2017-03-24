@@ -1,4 +1,4 @@
-package com.coderovers.makesurvey.serviceimpl;
+package com.coderovers.makesurvey.service.security.impl;
 
 import java.util.ArrayList;
 import java.util.Collection;

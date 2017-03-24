@@ -10,11 +10,11 @@
 <!-- First "state" listed is first executed - unless <on-start> -->
 	<action-state id="addAnswerToSurvey">
 <!-- 	requestParameters.
- -->		<evaluate expression="surveyControllerHelper.validateCart(requestParameters.cartId)"
-			result="order.cart" />
+ -->		<evaluate expression="surveyControllerHelper.validateSurvey(requestParameters.surveyId)"
+			result="survey" />
 		<transition to="collectCustomerInfo" />
-		<transition to="InvalidCartWarning"
-			on-exception="com.packt.webstore.exception.InvalidCartException" />		
+		<transition to="InvalidSurveyWarning"
+			on-exception="com.coderovers.makesurvey.exception.InvalidCartException" />		
 	</action-state>
 
 	<view-state id="collectCustomerInfo" view="collectCustomerInfo.jsp" model="survey">

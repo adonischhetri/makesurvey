@@ -46,6 +46,6 @@
 		</security:authentication-provider>
 	</security:authentication-manager>
 
-	<bean id="userDetailsService" class="com.coderovers.makesurvey.serviceimpl.UserDetailsServiceImpl"></bean>
+	<bean id="userDetailsService" class="com.coderovers.makesurvey.service.security.impl.UserDetailsServiceImpl"></bean>
  
 </beans>
