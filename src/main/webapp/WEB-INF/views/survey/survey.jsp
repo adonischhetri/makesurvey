@@ -26,27 +26,28 @@
 
 			<hr />
 
-			<div id="addQuestions"  class="col-lg-6">
-				<input type="button" value="Add Yes/No Question" id="addQuestionYesNo"/> &nbsp; 
-				<input type="button" value="Add Text Question" id="addQuestionText"/>
+			<div id="addQuestions" class="col-lg-6">
+				<input type="button" value="Add Yes/No Question"
+					id="addQuestionYesNo" /> &nbsp; <input type="button"
+					value="Add Text Question" id="addQuestionText" />
 			</div>
-			
-			<div  class="col-lg-6">
-				<div id="question" style="display:none; padding: 10px;  border: 1px solid #444; margin: 10px 0px;">
-					Enter Question: <input type="text" id="questionName" name = "question" value="" required /> &nbsp; 
-					<input type="button" value="Save" id="saveQuestion" />
-					<input type="hidden" value="0" name="typeIs" id="typeIs" />
+
+			<div class="col-lg-6">
+				<div id="question"
+					style="display: none; padding: 10px; border: 1px solid #444; margin: 10px 0px;">
+					Enter Question: <input type="text" id="questionName"
+						name="question" value="" required /> &nbsp; <input type="button"
+						value="Save" id="saveQuestion" /> <input type="hidden" value="0"
+						name="typeIs" id="typeIs" />
 				</div>
 			</div>
-<br />
-<hr />
+			<br />
+			<hr />
 
-<div  class="col-lg-6" id="questionList">
-	
-</div>
+			<div class="col-lg-6" id="questionList"></div>
 
-<br />
-<hr />
+			<br />
+			<hr />
 			<div class="form-group">
 				<div class="col-lg-offset-2 col-lg-10">
 					<input type="submit" id="btnAdd" class="btn btn-primary"

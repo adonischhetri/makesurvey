@@ -35,17 +35,18 @@ public class SurveyController {
 	public String createSurvey(@ModelAttribute("survey") Survey survey) {
 		return "survey";
 	}
-	
+
 	@RequestMapping(value = "/addQuestion", method = RequestMethod.GET)
-	public @ResponseBody String addQuestion(@RequestParam("questionType") String questionType, @RequestParam("question") String question, Model model){
-		
-		if(questionType.equals("0")){
-			
-		}else{
-			
+	public @ResponseBody String addQuestion(@RequestParam("questionType") String questionType,
+			@RequestParam("question") String question, Model model) {
+
+		if (questionType.equals("0")) {
+
+		} else {
+
 		}
-		
-		//save to session....
+
+		// save to session....
 		return "1";
 	}
 
@@ -56,14 +57,14 @@ public class SurveyController {
 			return "survey";
 		}
 
-		if(survey.getId() != 0){
+		if (survey.getId() != 0) {
 			redirectAttributes.addFlashAttribute("message", "Survey updated successfully!");
-		}else{
+		} else {
 			redirectAttributes.addFlashAttribute("message", "New survey added successfully!");
 		}
-		
+
 		surveyService.saveOrUpdate(survey);
-		
+
 		return "redirect:/";
 	}
 
@@ -78,11 +79,11 @@ public class SurveyController {
 		model.addAttribute("survey", surveyService.getById(id));
 		return "survey";
 	}
-	
+
 	@RequestMapping("/remove/{id}")
-    public String removeSurvey(@PathVariable("id") Long id){
-		
+	public String removeSurvey(@PathVariable("id") Long id) {
+
 		surveyService.deleteSurvey(surveyService.getById(id));
-        return "redirect:/";
-    }
+		return "redirect:/";
+	}
 }
