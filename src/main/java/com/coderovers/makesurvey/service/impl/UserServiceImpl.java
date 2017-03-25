@@ -46,10 +46,10 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User register(User user) {
+	public User register(User user, String role) {
 		Set<Roles> roleSet = new HashSet<Roles>();
-		if(roleRepository.findByType("CREATOR") != null){
-			Roles roles = roleRepository.findByType("CREATOR");
+		if(roleRepository.findByType(role) != null){
+			Roles roles = roleRepository.findByType(role);
 			roleRepository.save(roles);
 //			roles.setType("CREATOR");
 			System.out.println(roles+" yo ho roles aako db bata");
