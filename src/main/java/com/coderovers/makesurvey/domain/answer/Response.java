@@ -10,7 +10,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToOne;
 
-import com.coderovers.makesurvey.domain.SurveyTaker;
+import com.coderovers.makesurvey.domain.User;
 
 /**
  * @author Krishna Bhat
@@ -30,6 +30,6 @@ public class Response {
 	private Long id;
 	
 	@OneToOne
-	private SurveyTaker surveyTaker;
+	private User surveyTaker;
 
 }

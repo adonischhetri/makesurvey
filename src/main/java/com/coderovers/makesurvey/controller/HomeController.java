@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.coderovers.makesurvey.domain.SurveyCreator;
 import com.coderovers.makesurvey.domain.User;
 import com.coderovers.makesurvey.service.SecurityService;
 import com.coderovers.makesurvey.service.UserService;
@@ -59,7 +58,7 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
-	public String register(@Valid @ModelAttribute("newUser") SurveyCreator surveyCreator, BindingResult result,
+	public String register(@Valid @ModelAttribute("newUser") User surveyCreator, BindingResult result,
 			RedirectAttributes redirectAttributes) {
 		if (result.hasErrors()){
 			System.out.println("No error");

@@ -3,6 +3,7 @@ package com.coderovers.makesurvey.service.impl;
 import java.util.HashSet;
 import java.util.Set;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -45,13 +46,18 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void register(User user) {
+	public User register(User user) {
 		Set<Roles> roleSet = new HashSet<Roles>();
-		//System.out.println("role:"+roleRepository.findByType("CREATOR").getType());
-		//roleSet.add(roleRepository.findByType("CREATOR"));
+		if(roleRepository.findByType("CREATOR") != null){
+			Roles roles = roleRepository.findByType("CREATOR");
+			roleRepository.save(roles);
+//			roles.setType("CREATOR");
+			System.out.println(roles+" yo ho roles aako db bata");
+			roleSet.add(roles);
+		}
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		user.setRoles(roleSet);
-		userRepository.save(user);
+		return userRepository.save(user);
 	}
 
 }

@@ -6,7 +6,7 @@ import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Service;
 
-import com.coderovers.makesurvey.domain.SurveyCreator;
+import com.coderovers.makesurvey.domain.User;
 import com.coderovers.makesurvey.service.SurveyMailingService;
 
 /**
@@ -25,7 +25,7 @@ public class SurveyMailingServiceImpl implements SurveyMailingService {
     
 
 	@Override
-	public void sendPreConfiguredMail(SurveyCreator surveyCreator) {
+	public void sendPreConfiguredMail(User surveyCreator) {
 		SimpleMailMessage msg = new SimpleMailMessage(this.templateMessage);
         msg.setTo(surveyCreator.getEmail());
         msg.setText(

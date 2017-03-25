@@ -42,7 +42,7 @@ public class Survey implements Serializable {
 	private boolean visibility;
 
 	@ManyToOne()
-	private SurveyCreator surveyCreator;
+	private User surveyCreator;
 
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Question> questions;
