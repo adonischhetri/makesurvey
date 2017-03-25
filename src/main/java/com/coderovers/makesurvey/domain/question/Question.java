@@ -32,7 +32,7 @@ public class Question implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	private String title; // Survey title
+	private String title; // Question title
 
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Response> responses;
@@ -55,4 +55,14 @@ public class Question implements Serializable {
 	public void setTitle(String title) {
 		this.title = title;
 	}
+
+	public List<Response> getResponses() {
+		return responses;
+	}
+
+	public void setResponses(List<Response> responses) {
+		this.responses = responses;
+	}
+	
+	
 }

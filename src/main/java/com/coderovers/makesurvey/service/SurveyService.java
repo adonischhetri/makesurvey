@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.coderovers.makesurvey.domain.Survey;
 import com.coderovers.makesurvey.domain.User;
+import com.coderovers.makesurvey.domain.question.Question;
 
 /**
  * @author Krishna Bhat
@@ -11,7 +12,7 @@ import com.coderovers.makesurvey.domain.User;
  */
 
 public interface SurveyService {
-	public void saveOrUpdate(Survey survey);
+	public void saveOrUpdate(Survey survey,  List<Question> questions);
 
 	public void deleteSurvey(Survey survey);
 

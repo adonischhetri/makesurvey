@@ -12,30 +12,21 @@ function saveQuestion(question) {
 		success : function(response) {
 			$('#questionName').val('');
 			$('#question').hide();
+			qCount++;
+			$("#questionList").append("<p>"+qCount+". "+response.title+"</p>");
 			alert("Question saved successfully!!");
 		},
 
 		error : function(response) {
 
-			if (response.responseJSON.errorType == "ValidationError") {
-				$('#formInput').html("");
-				$('#errors').html("");
-				$("#errors").append("<h2>errors</h2>");
-				$.each(response.responseJSON.errors, function(i, error) {
-					$('#errors').append("<h3>" + error.message + "</h3>");
-				});
-
-				make_hidden('formInput');
-				make_visible('errors');
-
-			} else {
-				alert(response.responseJSON.errors(0));
-			}
+			alert("Opps!! Something went wrong. Please try again.");
 
 		}
 
 	});
 }
+
+var qCount = $("#qCounter").val();
 
 $("#addQuestionYesNo").on("click", function() {
 	$("#typeIs").val(0);

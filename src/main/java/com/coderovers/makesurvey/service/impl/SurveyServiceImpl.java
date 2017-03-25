@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.coderovers.makesurvey.domain.Survey;
 import com.coderovers.makesurvey.domain.User;
+import com.coderovers.makesurvey.domain.question.Question;
 import com.coderovers.makesurvey.repository.SurveyRepository;
 import com.coderovers.makesurvey.service.SurveyService;
 
@@ -24,7 +25,8 @@ public class SurveyServiceImpl implements SurveyService {
 	private SurveyRepository surveyRepository;
 
 	@Override
-	public void saveOrUpdate(Survey survey) {
+	public void saveOrUpdate(Survey survey,  List<Question> questions) {
+		survey.setQuestions(questions);
 		surveyRepository.save(survey);
 	}
 

@@ -39,11 +39,30 @@
 		<put-attribute name="body" value="/WEB-INF/views/login.jsp" />
 	</definition>
 	
+	<definition name="surveyList" extends="baseLayout">
+		<put-attribute name="title" value="Survey List" />
+		<put-attribute name="heading" value="My Survey List" />
+		<put-attribute name="tagline" value="My Survey List" />
+		<put-attribute name="body" value="/WEB-INF/views/survey/surveyList.jsp" />
+	</definition>
+	
 	<definition name="survey" extends="baseLayout">
 		<put-attribute name="title" value="Survey" />
 		<put-attribute name="heading" value="Create New Survey" />
 		<put-attribute name="tagline" value="Create Survey" />
 		<put-attribute name="body" value="/WEB-INF/views/survey/survey.jsp" />
+	</definition>
+	
+	<definition name="about" extends="baseLayout">
+		<put-attribute name="title" value="About MakeSurvey" />
+		<put-attribute name="heading" value="About MakeSurvey" />
+ 		<put-attribute name="body" value="/WEB-INF/views/about.jsp" />
+	</definition>
+	
+	<definition name="contact" extends="baseLayout">
+		<put-attribute name="title" value="Contact MakeSurvey" />
+		<put-attribute name="heading" value="Contact MakeSurvey" />
+ 		<put-attribute name="body" value="/WEB-INF/views/contact.jsp" />
 	</definition>
 	 	
 </tiles-definitions>

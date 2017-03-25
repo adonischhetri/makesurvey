@@ -10,11 +10,15 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.Future;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 import com.coderovers.makesurvey.domain.question.Question;
 
@@ -30,21 +34,26 @@ public class Survey implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
+	@NotEmpty
+	@Size(min=5, max=50, message="Survey title must be between 5 and 50")
 	private String title;
+	@NotEmpty
 	private String description;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date added_date;
-
-	@Temporal(TemporalType.TIMESTAMP)
-	@Future
-	private Date expiry_date;
-	private boolean visibility;
+	
+	private boolean visibility = true;
 
 	@ManyToOne()
 	private User surveyCreator;
 
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	//@OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.REMOVE, CascadeType.REFRESH, CascadeType.DETACH})
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "Survey_Question", joinColumns =
+    	@JoinColumn(name = "FK_Survey_id", referencedColumnName= "id"),
+            inverseJoinColumns = @JoinColumn(name = "FK_Question_id", referencedColumnName = "id")
+    )
 	private List<Question> questions;
 
 	Survey() {
@@ -82,20 +91,29 @@ public class Survey implements Serializable {
 		this.added_date = added_date;
 	}
 
-	public Date getExpiry_date() {
-		return expiry_date;
-	}
-
-	public void setExpiry_date(Date expiry_date) {
-		this.expiry_date = expiry_date;
-	}
-
 	public boolean isVisibility() {
 		return visibility;
 	}
 
 	public void setVisibility(boolean visibility) {
 		this.visibility = visibility;
+	}
+	
+
+	public User getSurveyCreator() {
+		return surveyCreator;
+	}
+
+	public void setSurveyCreator(User surveyCreator) {
+		this.surveyCreator = surveyCreator;
+	}
+
+	public List<Question> getQuestions() {
+		return questions;
+	}
+
+	public void setQuestions(List<Question> questions) {
+		this.questions = questions;
 	}
 
 	@Override
@@ -104,7 +122,6 @@ public class Survey implements Serializable {
 		int result = 1;
 		result = prime * result + ((added_date == null) ? 0 : added_date.hashCode());
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
-		result = prime * result + ((expiry_date == null) ? 0 : expiry_date.hashCode());
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		result = prime * result + (visibility ? 1231 : 1237);
 		return result;
@@ -129,11 +146,6 @@ public class Survey implements Serializable {
 				return false;
 		} else if (!description.equals(other.description))
 			return false;
-		if (expiry_date == null) {
-			if (other.expiry_date != null)
-				return false;
-		} else if (!expiry_date.equals(other.expiry_date))
-			return false;
 		if (title == null) {
 			if (other.title != null)
 				return false;
@@ -143,5 +155,13 @@ public class Survey implements Serializable {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Survey [id=" + id + ", title=" + title + ", description=" + description + ", added_date=" + added_date
+				+ ", visibility=" + visibility + ", surveyCreator=" + surveyCreator + ", questions=" + questions + "]";
+	}
+	
+	
 
 }

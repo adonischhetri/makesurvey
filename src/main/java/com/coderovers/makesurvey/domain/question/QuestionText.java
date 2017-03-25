@@ -18,20 +18,18 @@ import com.coderovers.makesurvey.domain.answer.AnswerText;
 public class QuestionText extends Question {
 
 	private static final long serialVersionUID = 4809542486713729710L;
-	
-	private String question;
-	
+		
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private AnswerText answerText;
 	
-	QuestionText(){}
+	public QuestionText(){}
 
-	public String getQuestion() {
-		return question;
+	public AnswerText getAnswerText() {
+		return answerText;
 	}
 
-	public void setQuestion(String question) {
-		this.question = question;
+	public void setAnswerText(AnswerText answerText) {
+		this.answerText = answerText;
 	}
 	
 }

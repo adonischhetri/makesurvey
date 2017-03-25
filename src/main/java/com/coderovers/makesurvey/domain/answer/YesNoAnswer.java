@@ -6,26 +6,24 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 /**
-* @author Krishna Bhat
-*
-*/
-
+ * @author Krishna Bhat
+ *
+ */
 @Entity
-@DiscriminatorValue("Answer_Text")
-public class AnswerText extends Response implements Serializable {
-
-	
+@DiscriminatorValue("Answer_YesNo")
+public class YesNoAnswer extends Response implements Serializable {
 	private static final long serialVersionUID = -790859050831162425L;
-	public String answer;
+
+	public boolean answer;
 	
-	public AnswerText(){}
-	
-	public String getAnswer() {
+	public YesNoAnswer(){}
+
+	public boolean getAnswer() {
 		return answer;
 	}
-	public void setAnswer(String answer) {
+
+	public void setAnswer(boolean answer) {
 		this.answer = answer;
 	}
-	
 
 }

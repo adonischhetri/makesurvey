@@ -25,7 +25,7 @@ public class Option implements Serializable {
 
 	private String title;
 
-	Option() {
+	public Option() {
 	}
 
 	public Long getId() {
