@@ -20,7 +20,7 @@ import com.coderovers.makesurvey.service.UserService;
  * @author Manish Karki
  * 
  */
-@Service
+@Service("myUserService")
 @Transactional
 public class UserServiceImpl implements UserService {
 

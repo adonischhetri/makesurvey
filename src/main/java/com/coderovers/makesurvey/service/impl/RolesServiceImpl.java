@@ -14,12 +14,12 @@ import com.coderovers.makesurvey.service.RoleService;
  */
 
 @Service
+@Transactional
 public class RolesServiceImpl implements RoleService {
 	
 	@Autowired
 	private RolesRepository roleRepository; 
 
-	@Transactional
 	@Override
 	public Roles getRoleByType(String type) {
 		return roleRepository.findByType(type);

@@ -5,6 +5,7 @@ import org.springframework.mail.MailException;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.coderovers.makesurvey.domain.User;
 import com.coderovers.makesurvey.service.SurveyMailingService;
@@ -14,6 +15,7 @@ import com.coderovers.makesurvey.service.SurveyMailingService;
  * 
  */
 @Service	
+@Transactional
 public class SurveyMailingServiceImpl implements SurveyMailingService {
 	@Autowired
 	private MailSender mailSender;
