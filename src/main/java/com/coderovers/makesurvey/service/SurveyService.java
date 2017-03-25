@@ -23,4 +23,6 @@ public interface SurveyService {
 	public List<Survey> getSurveyByCreator(User user);
 
 	public List<Survey> searchSurvey(String keyword);
+	
+	public Survey validate(Long surveyId);
 }

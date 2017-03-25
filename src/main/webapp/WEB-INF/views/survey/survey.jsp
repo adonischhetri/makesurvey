@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+ <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <section class="container">
 
@@ -50,7 +51,7 @@
 			<h3>Question List</h3>
 			<div class="col-lg-6" id="questionList">
 				<c:set var="qCounter" value="0" />
-				<c:if test = "${questionList != null}">
+				<c:if test = "${questionList != null  && fn:length(questionList) > 0}">
 					<c:forEach items = "${questionList}" var="question" varStatus="qCount">
 						<c:set var="qCounter" value="${qCount.index + 1}" />
 						<p>${qCounter}. ${question.title}</p>

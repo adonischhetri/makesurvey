@@ -26,6 +26,31 @@ function saveQuestion(question) {
 	});
 }
 
+
+function getQuestions(surveyId) {
+	$.ajax({
+		url : "/makesurvey/survey/questions/"+surveyId,
+		type : 'get',
+		dataType : 'json',
+		contentType : 'application/json',
+		success : function(response) {
+			$('#surveyQuestions').html('');
+			$('#surveyQuestions').show();
+			$.each(response, function(i, question){
+				$("#surveyQuestions").append("<p>"+(i+1)+". "+question.title+"</p>");
+			});
+			
+		},
+
+		error : function(response) {
+
+			alert("Opps!! Something went wrong. Please try again.");
+
+		}
+
+	});
+}
+
 var qCount = $("#qCounter").val();
 
 $("#addQuestionYesNo").on("click", function() {

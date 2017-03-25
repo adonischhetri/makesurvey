@@ -40,7 +40,7 @@
 				<!-- hibernate.dialect. This property makes Hibernate generate the appropriate 
 					SQL for the chosen database. -->
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
-				<!-- <prop key="hibernate.hbm2ddl.import_files">initial_data.sql</prop> -->
+				<prop key="hibernate.hbm2ddl.import_files">classpath:initial_data.sql</prop>
 			</props>
 		</property>
 	</bean>

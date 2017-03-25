@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -65,7 +64,7 @@ public class SurveyController {
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
 	public String createSurvey(@ModelAttribute("survey") Survey survey, Model model) {
-		List<Question> questionList = null;
+		List<Question> questionList = new ArrayList<Question>();
 		if (model.containsAttribute("questionList")) {
 			questionList = (List<Question>) model.asMap().get("questionList");
 		}
@@ -82,7 +81,7 @@ public class SurveyController {
 			return "survey";
 		}
 
-		List<Question> questionList = null;
+		List<Question> questionList = new ArrayList<Question>();
 		if (model.containsAttribute("questionList")) {
 			questionList = (List<Question>) model.asMap().get("questionList");
 		}
@@ -97,6 +96,11 @@ public class SurveyController {
 		}
 
 		return "redirect:/survey";
+	}
+	
+	@RequestMapping(value = "/questions/{surveyId}", method = RequestMethod.GET)
+	public @ResponseBody List<Question> surveyQuestions(@PathVariable("surveyId") Long surveyId){
+		return surveyService.getById(surveyId).getQuestions();
 	}
 
 	@RequestMapping(value = "", method = RequestMethod.GET)

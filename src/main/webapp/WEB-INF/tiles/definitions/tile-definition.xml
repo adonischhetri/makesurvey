@@ -53,6 +53,13 @@
 		<put-attribute name="body" value="/WEB-INF/views/survey/survey.jsp" />
 	</definition>
 	
+	<definition name="collectQuestionAnswer" extends="baseLayout">
+		<put-attribute name="title" value="Survey" />
+		<put-attribute name="heading" value="Create New Survey" />
+		<put-attribute name="tagline" value="Create Survey" />
+		<put-attribute name="body" value="/WEB-INF/flows/takesurvey/collectQuestionAnswer.jsp" />
+	</definition>
+	
 	<definition name="about" extends="baseLayout">
 		<put-attribute name="title" value="About MakeSurvey" />
 		<put-attribute name="heading" value="About MakeSurvey" />

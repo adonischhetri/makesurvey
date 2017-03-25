@@ -13,10 +13,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import com.coderovers.makesurvey.domain.answer.Response;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * @author Krishna Bhat
@@ -34,6 +34,7 @@ public class Question implements Serializable {
 	private Long id;
 	private String title; // Question title
 
+	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Response> responses;
 

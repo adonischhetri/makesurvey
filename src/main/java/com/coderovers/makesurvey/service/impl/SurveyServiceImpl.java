@@ -3,13 +3,17 @@ package com.coderovers.makesurvey.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.coderovers.makesurvey.domain.Survey;
 import com.coderovers.makesurvey.domain.User;
 import com.coderovers.makesurvey.domain.question.Question;
+import com.coderovers.makesurvey.exception.InvalidSurveyException;
 import com.coderovers.makesurvey.repository.SurveyRepository;
+import com.coderovers.makesurvey.repository.UserRepository;
 import com.coderovers.makesurvey.service.SurveyService;
 
 /**
@@ -24,8 +28,15 @@ public class SurveyServiceImpl implements SurveyService {
 	@Autowired
 	private SurveyRepository surveyRepository;
 
+	@Autowired
+	private UserRepository userRepository;
+
 	@Override
-	public void saveOrUpdate(Survey survey,  List<Question> questions) {
+	public void saveOrUpdate(Survey survey, List<Question> questions) {
+
+		String username = SecurityContextHolder.getContext().getAuthentication().getName();
+
+		survey.setSurveyCreator(userRepository.findByUserName(username));
 		survey.setQuestions(questions);
 		surveyRepository.save(survey);
 	}
@@ -53,6 +64,17 @@ public class SurveyServiceImpl implements SurveyService {
 	@Override
 	public List<Survey> searchSurvey(String keyword) {
 		return surveyRepository.findByTitleContainsOrDescriptionContainsAllIgnoreCaseOrderByTitleAsc(keyword, keyword);
+	}
+
+	@Override
+	@PreAuthorize("hasRole('TAKER1')")
+	public Survey validate(Long surveyId) {
+		Survey survey = surveyRepository.findOne(surveyId);
+		System.out.println("SURVEY= "+survey.getTitle());
+		if (survey == null || survey.getQuestions().size() == 0) {
+			throw new InvalidSurveyException(surveyId);
+		}
+		return survey;
 	}
 
 }

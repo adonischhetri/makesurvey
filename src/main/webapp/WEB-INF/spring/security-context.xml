@@ -12,10 +12,7 @@
 		<!-- <security:intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
 		<security:access-denied-handler error-page="/admin/generalerror" /> -->
 		
-	<!-- 	<security:intercept-url pattern="/add/offer" access="isAuthenticated()" />
-		 -->
-		 
-	    <!-- <security:intercept-url pattern="/dashboard" access="hasAnyRole('ROLE_ADMIN1')"  /> -->
+	    <security:intercept-url pattern="/survey/*" access="hasAnyRole('ROLE_CREATOR')"  />
 	    <security:intercept-url pattern="/dashboard" access="hasAnyRole('ROLE_CREATOR')"  />
 
 		<security:form-login 

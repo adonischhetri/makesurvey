@@ -1,6 +1,7 @@
 package com.coderovers.makesurvey.domain;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -20,6 +21,8 @@ import javax.xml.bind.annotation.XmlTransient;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -58,7 +61,7 @@ public class User implements Serializable {
 	@Transient
 	private MultipartFile profileImage;
 
-	private int enabled = 1;
+	private boolean enabled = true;
 
 	@ManyToMany(fetch = FetchType.EAGER, cascade={CascadeType.MERGE, CascadeType.REMOVE, CascadeType.REFRESH, CascadeType.DETACH})
 	@JoinTable(joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
@@ -68,7 +71,7 @@ public class User implements Serializable {
 	@JoinColumn(name = "location_id")
 	@Valid
 	private Address address;
-
+	
 	public Long getId() {
 		return id;
 	}
@@ -142,11 +145,11 @@ public class User implements Serializable {
 		this.profileImage = profileImage;
 	}
 
-	public int getEnabled() {
+	public boolean getEnabled() {
 		return enabled;
 	}
 
-	public void setEnabled(int enabled) {
+	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
 	}
 

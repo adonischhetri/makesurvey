@@ -9,15 +9,12 @@
 
 <!-- First "state" listed is first executed - unless <on-start> -->
 	<action-state id="addAnswerToSurvey">
-<!-- 	requestParameters.
- -->		<evaluate expression="surveyControllerHelper.validateSurvey(requestParameters.surveyId)"
-			result="survey" />
-		<transition to="collectCustomerInfo" />
-		<transition to="InvalidSurveyWarning"
-			on-exception="com.coderovers.makesurvey.exception.InvalidCartException" />		
+ 		<evaluate expression="surveyControllerHelper.validateSurvey(requestParameters.surveyId)" result="survey" />
+		<transition to="collectQuestionAnswers" />
+		<transition to="InvalidSurveyWarning" on-exception="com.coderovers.makesurvey.exception.InvalidSurveyException" />		
 	</action-state>
 
-	<view-state id="collectCustomerInfo" view="collectCustomerInfo.jsp" model="survey">
+	<view-state id="collectQuestionAnswers" view="collectQuestionAnswer" model="survey">
 		<transition on="customerInfoCollected" to="collectSurveyDetail" />
 		<transition on="surveyCancelled" to="cancelSurvey" validate= "false"/>
 	</view-state>
@@ -28,13 +25,13 @@
 	</view-state>
 
 	<view-state id="surveyConfirmation">
-		<transition on="surveyConfirmed" to="processOrder" />
+		<transition on="surveyConfirmed" to="processSurvey" />
 		<transition on="backToCollectSurveyDetail" to="collectSurveyDetail" />
 	</view-state>
 	
-	<!-- result="order.orderId" saves result of expression -->
+	<!-- result="survey.surveyId" saves result of expression -->
 	<action-state id="processSurvey">
-		<evaluate expression="surveyControllerHelper.saveSurvey(order)" result="survey.surveyId"/>
+		<evaluate expression="surveyControllerHelper.saveSurvey(survey)" result="survey.surveyId"/>
 		<transition to="thankSurveyTaker" />
 	</action-state>
 	
