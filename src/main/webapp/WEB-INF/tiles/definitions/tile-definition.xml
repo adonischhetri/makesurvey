@@ -60,6 +60,12 @@
 		<put-attribute name="body" value="/WEB-INF/flows/takesurvey/collectQuestionAnswer.jsp" />
 	</definition>
 	
+	<definition name="general-error" extends="baseLayout">
+		<put-attribute name="title" value="OOPS!!!" />
+		<put-attribute name="heading" value="Exception Occured" />
+ 		<put-attribute name="body" value="/WEB-INF/views/exception/general-error.jsp" />
+	</definition>
+	
 	<definition name="about" extends="baseLayout">
 		<put-attribute name="title" value="About MakeSurvey" />
 		<put-attribute name="heading" value="About MakeSurvey" />
