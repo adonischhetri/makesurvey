@@ -1,5 +1,7 @@
 package com.coderovers.makesurvey.domain.answer;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
@@ -25,7 +27,9 @@ import com.coderovers.makesurvey.domain.question.Question;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE) // Least normalisation
 														// strategy
 @DiscriminatorColumn(name = "Answer_Type", discriminatorType = DiscriminatorType.STRING)
-public class Response {
+public class Response implements Serializable {
+
+	private static final long serialVersionUID = -2303559008127303871L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

@@ -19,9 +19,9 @@
 
 	<section>
 		<div class="container">
-			<p>
-				<a href="<spring:url value="/products" />" class="btn btn-primary">
-					<span class="glyphicon-hand-left glyphicon"></span> products
+			<p> Dummy survey wih id = 1
+				<a href="<spring:url value="/takesurvey?surveyId=1" />" class="btn btn-primary">
+					Take Survey
 				</a>
 			</p>
 		</div>

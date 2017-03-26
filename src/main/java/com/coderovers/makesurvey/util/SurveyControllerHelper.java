@@ -20,4 +20,8 @@ public class SurveyControllerHelper {
 	public Survey validateSurvey(Long surveyId){
 		return surveyService.validate(surveyId);
 	}
+	
+	public void saveSurvey(Survey survey) {
+		surveyService.saveSurvey(survey);
+	}
 }

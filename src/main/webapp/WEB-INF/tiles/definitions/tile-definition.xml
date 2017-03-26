@@ -87,6 +87,16 @@
 		<put-attribute name="body" value="/WEB-INF/views/surveytaker/dashboard.jsp" />
 	</definition>
 	
+	
+	<definition name="thankSurveyTaker" extends="baseLayout">
+		<put-attribute name="title" value="Success" />
+		<!-- <put-attribute name="heading" value="Success" /> -->
+		<put-attribute name="tagline" value="Survey Success" />
+		<put-attribute name="body" value="/WEB-INF/views/surveytaker/thankSurveyTaker.jsp" />
+	</definition>
+	
+	
+	
 	<definition name="about" extends="baseLayout">
 		<put-attribute name="title" value="About MakeSurvey" />
 		<put-attribute name="heading" value="About MakeSurvey" />

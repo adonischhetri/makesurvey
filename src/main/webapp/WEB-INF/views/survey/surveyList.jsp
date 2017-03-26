@@ -28,5 +28,3 @@
 		<a href="${pageContext.request.contextPath}/survey/create">Create New Survey</a>
 	</p>
 </div>
-
-<a href="<spring:url value="takesurvey?surveyId=1" />">Take Survey</a>

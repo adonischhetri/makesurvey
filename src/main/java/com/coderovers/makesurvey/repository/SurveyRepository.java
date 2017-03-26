@@ -22,4 +22,5 @@ public interface SurveyRepository extends CrudRepository<Survey, Long> {
 
 	//@Query("SELECT s FROM Survey s WHERE s.title LIKE %:keyword% OR s.description LIKE %:keyword%")
 	public List<Survey> findByTitleContainsOrDescriptionContainsAllIgnoreCaseOrderByTitleAsc(String keywordTitle, String keywordDescription);
+	
 }

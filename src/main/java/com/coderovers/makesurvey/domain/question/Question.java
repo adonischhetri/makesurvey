@@ -34,7 +34,7 @@ public class Question implements Serializable {
 	private String title; // Question title
 
 	@JsonIgnore
-	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Response responses;
 
 	public Question() {

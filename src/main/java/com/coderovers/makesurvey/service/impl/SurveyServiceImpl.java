@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.coderovers.makesurvey.domain.Survey;
 import com.coderovers.makesurvey.domain.User;
+import com.coderovers.makesurvey.domain.answer.Response;
 import com.coderovers.makesurvey.domain.question.Question;
 import com.coderovers.makesurvey.exception.InvalidSurveyException;
 import com.coderovers.makesurvey.repository.SurveyRepository;
@@ -70,11 +71,20 @@ public class SurveyServiceImpl implements SurveyService {
 	@PreAuthorize("hasRole('ROLE_TAKER')")
 	public Survey validate(Long surveyId) {
 		Survey survey = surveyRepository.findOne(surveyId);
-		System.out.println("SURVEY= "+survey.getQuestions().get(0));
+		for(Question question : survey.getQuestions()){
+			Response response = new Response();
+			response.setAnswer("");
+			question.setResponses(response);
+		}
+		//System.out.println("SURVEY= "+survey.getQuestions().size());
 		if (survey == null || survey.getQuestions().size() == 0) {
 			throw new InvalidSurveyException(surveyId);
 		}
 		return survey;
+	}
+	
+	public void saveSurvey(Survey survey){
+		surveyRepository.save(survey);
 	}
 
 }

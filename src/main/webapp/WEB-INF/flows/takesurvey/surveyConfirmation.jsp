@@ -5,53 +5,35 @@
 
 <div class="container">
 	<div class="row">
-		<form:form modelAttribute="Survey" class="form-horizontal">
+		<form:form modelAttribute="survey" class="form-horizontal">
 			<input type="hidden" name="_flowExecutionKey" value="${flowExecutionKey}" />
 
 			<div
 				class="well col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
 				<div class="text-center">
-					<h1>Token</h1>
+					<h1>You are submitting:</h1>
 				</div>
 				<div class="row">
-					<div class="col-xs-6 col-sm-6 col-md-6">
-						<address>
-							<strong></strong> <br> <br>
-						</address>
-					</div>
-					<div class="col-xs-6 col-sm-6 col-md-6 text-right">
-						<p>
-							<em> <fmt:formatDate type="date" value="${survey.addedDate}" /></em>
-						</p>
-					</div>
+						<h4>${survey.title}</h4>
+						<p>${survey.description}</p>
 				</div>
 				<div class="row">
-					<div class="col-xs-6 col-sm-6 col-md-6">
-						<address>
-							<strong></strong> <br>
-
-						</address>
-					</div>
-
+					<c:forEach items="${survey.questions}" var="question" varStatus="loop">
+					<p>
+					${loop.index+1}) ${question.title}
+					:
+					${survey.questions[loop.index].responses.answer}
+					</p>
+				</c:forEach>
 				</div>
 				<div class="row">
 
-					<table class="table table-hover">
-						<thead>
-							<tr>
-
-							</tr>
-						</thead>
-						<tbody>
-
-						</tbody>
-					</table>
-					<button id="back" class="btn btn-default" name="_eventId_backToCollectSurveyDetail">back</button>
+					<button id="back" class="btn btn-default" name="_eventId_backToCollectSurveyDetail">Back</button>
 
 					<button type="submit" class="btn btn-success" name="_eventId_surveyConfirmed">
 						Confirm   <span class="glyphicon glyphicon-chevron-right"></span>
 					</button>
-					<button id="btnCancel" class="btn btn-default" name="_eventId_cancel">Cancel</button>
+					<!-- <button id="btnCancel" class="btn btn-default" name="_eventId_cancel">Cancel</button> -->
 				</div>
 			</div>
 		</form:form>

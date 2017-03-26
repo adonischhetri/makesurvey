@@ -26,7 +26,7 @@
 	
 	<!-- result="survey.surveyId" saves result of expression -->
 	<action-state id="processSurvey">
-		<evaluate expression="surveyControllerHelper.saveSurvey(survey)" result="survey.surveyId"/>
+		<evaluate expression="surveyControllerHelper.saveSurvey(survey)"/>
 		<transition to="thankSurveyTaker" />
 	</action-state>
 	
@@ -34,7 +34,7 @@
 		<transition to="endState"/>
 	</view-state>
 	
-	<view-state id="thankSurveyTaker" model="survey">
+	<view-state id="thankSurveyTaker" view="thankSurveyTaker">
 		<transition to="endState"/>
 	</view-state>
 

@@ -8,6 +8,7 @@
 	Welcome  <security:authentication property="principal.username" />, &nbsp;&nbsp;&nbsp;
 
 	
+	<a href="<c:url value="/survey" />"> Survey List</a> &nbsp;&nbsp;&nbsp; 
 	<a href="<c:url value="/survey/create" />"> Create Survey</a> &nbsp;&nbsp;&nbsp; 
 	<a href="<c:url value="/taker/add" />"> Add User</a> &nbsp;&nbsp;&nbsp; 
 	
