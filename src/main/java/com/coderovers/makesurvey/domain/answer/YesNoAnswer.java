@@ -14,7 +14,7 @@ import javax.persistence.Entity;
 public class YesNoAnswer extends Response implements Serializable {
 	private static final long serialVersionUID = -790859050831162425L;
 
-	public String answer;
+	/*public String answer;
 	
 	public YesNoAnswer(){}
 
@@ -24,7 +24,7 @@ public class YesNoAnswer extends Response implements Serializable {
 
 	public void setAnswer(String answer) {
 		this.answer = answer;
-	}
+	}*/
 
 	
 

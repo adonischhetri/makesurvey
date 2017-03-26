@@ -1,7 +1,6 @@
 package com.coderovers.makesurvey.domain.question;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorColumn;
@@ -13,7 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import com.coderovers.makesurvey.domain.answer.Response;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -35,8 +34,8 @@ public class Question implements Serializable {
 	private String title; // Question title
 
 	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<Response> responses;
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private Response responses;
 
 	public Question() {
 	}
@@ -57,13 +56,14 @@ public class Question implements Serializable {
 		this.title = title;
 	}
 
-	public List<Response> getResponses() {
+	public Response getResponses() {
 		return responses;
 	}
 
-	public void setResponses(List<Response> responses) {
+	public void setResponses(Response responses) {
 		this.responses = responses;
 	}
+
 	
 	
 }

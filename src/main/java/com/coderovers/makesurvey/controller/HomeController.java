@@ -77,6 +77,11 @@ public class HomeController {
 		System.out.println("inside success");
 		return "login";
 	}
+	
+	@RequestMapping(value = { "/about" }, method = RequestMethod.GET)
+	public String aboutUs() {
+		return "login";
+	}
 
 	@RequestMapping(value = "/surveyTakers", method = RequestMethod.POST)
 	public @ResponseBody User surveyTaker(@Valid @RequestBody User user) {

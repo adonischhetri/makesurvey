@@ -25,11 +25,11 @@
 				:
 				<c:choose>
 					<c:when test="${question.getClass().name eq 'com.coderovers.makesurvey.domain.question.YesNo'}">
-						<form:radiobutton path="questions[${loop.index}].yesnoAnswer" value="" id="yes"/><label for="yes">Yes</label>
-						<form:radiobutton path="questions[${loop.index}].yesnoAnswer" value="" id="no"/><label for="no">No</label>
+						<form:radiobutton path="questions[${loop.index}].responses.answer" value="" id="yes"/><label for="yes">Yes</label>
+						<form:radiobutton path="questions[${loop.index}].responses.answer" value="" id="no"/><label for="no">No</label>
 					</c:when>
 					<c:otherwise>
-						<form:input path="questions[${loop.index}].answerText" value=""/>
+						<form:input path="questions[${loop.index}].responses[${loop.index}].answer" value=""/>
 					</c:otherwise>
 				</c:choose>
 				</p>
