@@ -29,7 +29,7 @@
 						<form:radiobutton path="questions[${loop.index}].responses.answer" value="" id="no"/><label for="no">No</label>
 					</c:when>
 					<c:otherwise>
-						<form:input path="questions[${loop.index}].responses[${loop.index}].answer" value=""/>
+						<form:input path="questions[${loop.index}].responses.answer" value=""/>
 					</c:otherwise>
 				</c:choose>
 				</p>

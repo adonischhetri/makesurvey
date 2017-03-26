@@ -80,15 +80,28 @@ public class HomeController {
 	
 	@RequestMapping(value = { "/about" }, method = RequestMethod.GET)
 	public String aboutUs() {
-		return "login";
-	}
-
-	@RequestMapping(value = "/surveyTakers", method = RequestMethod.POST)
-	public @ResponseBody User surveyTaker(@Valid @RequestBody User user) {
-		userService.register(user, "TAKER");
-		return user;
+		return "about";
 	}
 	
+	@RequestMapping(value = { "/contact" }, method = RequestMethod.GET)
+	public String contactUs() {
+		return "contact";
+	}
 
+	@RequestMapping(value = "/taker/add", method = RequestMethod.GET)
+	public String signupTaker(@ModelAttribute("newUser") User user) {
+		return "signup";
+	}
+	
+	@RequestMapping(value = "/taker/add", method = RequestMethod.POST)
+	public String surveyTaker(@Valid @ModelAttribute("newUser") User surveyCreator, BindingResult result,
+			RedirectAttributes redirectAttributes) {
+		if (result.hasErrors()) {
+			return "signup";
+		}
+		userService.register(surveyCreator, Role.TAKER.getRole());
+		redirectAttributes.addFlashAttribute("message", "New user successfully added!");
+		return "redirect:/dashboard";
+	}
 
 }

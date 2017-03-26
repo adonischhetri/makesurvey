@@ -1,6 +1,7 @@
 package com.coderovers.makesurvey.service.impl;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 
@@ -56,12 +57,21 @@ public class UserServiceImpl implements UserService {
 		}
 		if(SecurityContextHolder.getContext().getAuthentication().getName() != null){
 			String name = SecurityContextHolder.getContext().getAuthentication().getName();
-			User createdByUser = userRepository.findByUserName(name);
-			user.setcreatedByUser(createdByUser);
+			user.setCreatedByUser(name);
 		}
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		user.setRoles(roleSet);
 		return userRepository.save(user);
+	}
+
+	@Override
+	public List<User> findSurveyTakers() {
+		String name = null;
+		if(SecurityContextHolder.getContext().getAuthentication().getName() != null){
+			name = SecurityContextHolder.getContext().getAuthentication().getName();
+			//createdByUser = userRepository.findByUserName(name);
+		}
+		return userRepository.findTakers(name);
 	}
 
 }

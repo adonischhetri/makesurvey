@@ -53,7 +53,7 @@ public class User implements Serializable {
 	private String password;
 	
 	@Column(name = "created_by")
-	private User createdByUser;
+	private String createdByUser;
 
 	@Transient
 	private String confirmPassword;
@@ -136,12 +136,12 @@ public class User implements Serializable {
 	public void setConfirmPassword(String confirmPassword) {
 		this.confirmPassword = confirmPassword;
 	}
-	
-	public User getcreatedByUser() {
+
+	public String getCreatedByUser() {
 		return createdByUser;
 	}
 
-	public void setcreatedByUser(User createdByUser) {
+	public void setCreatedByUser(String createdByUser) {
 		this.createdByUser = createdByUser;
 	}
 

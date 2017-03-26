@@ -1,4 +1,10 @@
 function saveQuestion(question) {
+	if(question == "" || question == null)
+	{
+		alert("Please enter question.");
+		$("#questionName").focus();
+		return;
+	}
 	var questionType = $("#typeIs").val();
 	$.ajax({
 		url : "/makesurvey/survey/addQuestion",

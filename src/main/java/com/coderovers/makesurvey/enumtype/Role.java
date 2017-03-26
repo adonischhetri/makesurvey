@@ -6,7 +6,7 @@ package com.coderovers.makesurvey.enumtype;
  */
 
 public enum Role {
-	CREATOR("CREATOR"), ADMIN("ADMIN");
+	CREATOR("CREATOR"), ADMIN("ADMIN"), TAKER("TAKER");
 	String role;
 
 	private Role(String role) {
