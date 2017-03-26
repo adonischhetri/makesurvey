@@ -8,11 +8,5 @@
 	<h1>
 		<tiles:insertAttribute name="heading" />
 	</h1>
-	<p>
-		<tiles:insertAttribute name="tagline" />
-		&nbsp; <security:authorize access="isAuthenticated()">
-  					Welcome  <security:authentication property="principal.username" />, &nbsp; 
-  					<a href="<spring:url  value="/doLogout" />">Logout</a>
-				</security:authorize>
-	</p>
+	
 </div>

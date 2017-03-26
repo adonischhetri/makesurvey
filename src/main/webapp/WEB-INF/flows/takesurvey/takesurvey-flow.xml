@@ -15,18 +15,13 @@
 	</action-state>
 
 	<view-state id="collectQuestionAnswers" view="collectQuestionAnswer" model="survey">
-		<transition on="customerInfoCollected" to="collectSurveyDetail" />
+		<transition on="surveyInfoCollected" to="surveyConfirmation" />
 		<transition on="surveyCancelled" to="cancelSurvey" validate= "false"/>
 	</view-state>
 
-	<view-state id="collectSurveyDetail" model="survey">
-		<transition on="surveyDetailCollected" to="surveyConfirmation" />
-		<transition on="backToCollectCustomerInfo" to="collectCustomerInfo" />
-	</view-state>
-
-	<view-state id="surveyConfirmation">
+	<view-state id="surveyConfirmation" view="surveyConfirmation">
 		<transition on="surveyConfirmed" to="processSurvey" />
-		<transition on="backToCollectSurveyDetail" to="collectSurveyDetail" />
+		<transition on="backToCollectSurveyDetail" to="collectQuestionAnswers" />
 	</view-state>
 	
 	<!-- result="survey.surveyId" saves result of expression -->

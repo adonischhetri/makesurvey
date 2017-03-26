@@ -14,16 +14,18 @@ import javax.persistence.Entity;
 public class YesNoAnswer extends Response implements Serializable {
 	private static final long serialVersionUID = -790859050831162425L;
 
-	public boolean answer;
+	public String answer;
 	
 	public YesNoAnswer(){}
 
-	public boolean getAnswer() {
+	public String getAnswer() {
 		return answer;
 	}
 
-	public void setAnswer(boolean answer) {
+	public void setAnswer(String answer) {
 		this.answer = answer;
 	}
+
+	
 
 }

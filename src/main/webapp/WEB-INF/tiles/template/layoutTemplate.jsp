@@ -10,6 +10,8 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" href="resources/images/favicon.ico" type="image/x-icon">
+<link rel="icon" href="resources/images/favicon.ico" type="image/x-icon">
 
 <title><tiles:insertAttribute name="title" /></title>
 
@@ -17,7 +19,7 @@
 
 <link href="http://getbootstrap.com/examples/jumbotron/jumbotron.css"	rel="stylesheet">
 
-<!-- <link href="resources/css/survey.css"	rel="stylesheet"> -->
+<link href="resources/css/survey.css"	rel="stylesheet">
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 
@@ -30,7 +32,11 @@
 			<ul class="nav nav-pills pull-right">
 				<tiles:insertAttribute name="navigation" />
 			</ul>
-			<h3 class="text-muted">MakeSurvey</h3>
+			<h3 class="text-muted">
+				<a href="<spring:url value="/"/>">
+					<img src="resources/images/coderovers.png" />
+				</a>
+			</h3>
 		</div>
 
 
@@ -43,7 +49,7 @@
 			</p>
 		</div>
 
-		<div class="row">
+		<div class="row maincontent">
 			<tiles:insertAttribute name="body" />
 		</div>
 

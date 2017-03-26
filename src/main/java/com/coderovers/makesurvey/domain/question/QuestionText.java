@@ -22,13 +22,14 @@ public class QuestionText extends Question {
 		
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private AnswerText answerText;
-	DiscriminatorValue val = null;
 	
 	@Transient
+	String val = null;
+	
 	public String getDiscriminatorValue(){
-	    val = this.getClass().getAnnotation( DiscriminatorValue.class );
+		DiscriminatorValue val1 = this.getClass().getAnnotation( DiscriminatorValue.class );
 
-	    return val == null ? null : val.value();
+	    return val == null ? null : val1.value();
 	}
 	
 	public QuestionText(){}

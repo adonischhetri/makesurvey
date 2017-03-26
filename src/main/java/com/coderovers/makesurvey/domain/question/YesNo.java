@@ -7,7 +7,7 @@ import javax.persistence.FetchType;
 import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 
-import com.coderovers.makesurvey.domain.answer.AnswerText;
+import com.coderovers.makesurvey.domain.answer.YesNoAnswer;
 
 /**
  * @author Krishna Bhat
@@ -19,26 +19,28 @@ import com.coderovers.makesurvey.domain.answer.AnswerText;
 public class YesNo extends Question {
 
 	private static final long serialVersionUID = -3761303867879759190L;
+	
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private AnswerText answerText;
-	
-	DiscriminatorValue val = null;
-	
+	private YesNoAnswer yesnoAnswer;
+
 	@Transient
-	public String getDiscriminatorValue(){
-	    val = this.getClass().getAnnotation( DiscriminatorValue.class );
+	String val = null;
 
-	    return val == null ? null : val.value();
-	}
-	
-	public YesNo(){}
+	public String getDiscriminatorValue() {
+		DiscriminatorValue val1 = this.getClass().getAnnotation(DiscriminatorValue.class);
 
-	public AnswerText getAnswerText() {
-		return answerText;
+		return val == null ? null : val1.value();
 	}
 
-	public void setAnswerText(AnswerText answerText) {
-		this.answerText = answerText;
+	public YesNo() {
 	}
-	
+
+	public YesNoAnswer getYesnoAnswer() {
+		return yesnoAnswer;
+	}
+
+	public void setYesnoAnswer(YesNoAnswer yesnoAnswer) {
+		this.yesnoAnswer = yesnoAnswer;
+	}
+
 }

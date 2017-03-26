@@ -67,10 +67,10 @@ public class SurveyServiceImpl implements SurveyService {
 	}
 
 	@Override
-	@PreAuthorize("hasRole('TAKER1')")
+	@PreAuthorize("hasRole('ROLE_TAKER')")
 	public Survey validate(Long surveyId) {
 		Survey survey = surveyRepository.findOne(surveyId);
-		System.out.println("SURVEY= "+survey.getTitle());
+		System.out.println("SURVEY= "+survey.getQuestions().get(0));
 		if (survey == null || survey.getQuestions().size() == 0) {
 			throw new InvalidSurveyException(surveyId);
 		}

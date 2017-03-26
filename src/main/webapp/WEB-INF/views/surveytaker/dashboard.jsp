@@ -4,10 +4,4 @@
 <%@ taglib prefix="security"
 	uri="http://www.springframework.org/security/tags"%>
 
-<security:authorize access="isAuthenticated()">
-	Welcome  <security:authentication property="principal.username" />, &nbsp;&nbsp;&nbsp;
-
-	
-	<a href="<c:url value="/survey/create" />"> Create Survey</a>
-
-</security:authorize>
+ Survey Taker Dashboard

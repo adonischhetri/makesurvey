@@ -10,7 +10,17 @@ import org.springframework.web.bind.support.SessionStatus;
 public class LoginController {
 
 	@RequestMapping(value = "/dashboard", method = RequestMethod.GET)
-	public String login() {
+	public String surveyCreator() {
+		return "dashboard";
+	}
+	
+	@RequestMapping(value = "/surveytaker", method = RequestMethod.GET)
+	public String surveyTaker() {
+		return "surveytaker";
+	}
+	
+	@RequestMapping(value = "/admin", method = RequestMethod.GET)
+	public String admin() {
 		return "dashboard";
 	}
 

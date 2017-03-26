@@ -32,6 +32,13 @@
 		<put-attribute name="body" value="/WEB-INF/views/survey/dashboard.jsp" />
 	</definition>
 	
+	<definition name="admin" extends="baseLayout">
+		<put-attribute name="title" value="MakeSurvey/Welcome" />
+		<put-attribute name="heading" value="Admin" />
+		<put-attribute name="tagline" value="Admin" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/dashboard.jsp" />
+	</definition>
+	
 	<definition name="login" extends="baseLayout">
 		<put-attribute name="title" value="Login - makesurvey" />
 		<put-attribute name="heading" value="Login" />
@@ -55,15 +62,29 @@
 	
 	<definition name="collectQuestionAnswer" extends="baseLayout">
 		<put-attribute name="title" value="Survey" />
-		<put-attribute name="heading" value="Create New Survey" />
-		<put-attribute name="tagline" value="Create Survey" />
+		<!-- <put-attribute name="heading" value="Take Survey" /> -->
+		<put-attribute name="tagline" value="Take Survey" />
 		<put-attribute name="body" value="/WEB-INF/flows/takesurvey/collectQuestionAnswer.jsp" />
+	</definition>
+	
+	<definition name="surveyConfirmation" extends="baseLayout">
+		<put-attribute name="title" value="Survey Confirmation" />
+		<!-- <put-attribute name="heading" value="Take Survey" /> -->
+		<put-attribute name="tagline" value="Survey Confirmation" />
+		<put-attribute name="body" value="/WEB-INF/flows/takesurvey/surveyConfirmation.jsp" />
 	</definition>
 	
 	<definition name="general-error" extends="baseLayout">
 		<put-attribute name="title" value="OOPS!!!" />
 		<put-attribute name="heading" value="Exception Occured" />
  		<put-attribute name="body" value="/WEB-INF/views/exception/general-error.jsp" />
+	</definition>
+	
+	<definition name="surveytaker" extends="baseLayout">
+		<put-attribute name="title" value="SurveyTaker" />
+		<put-attribute name="heading" value="Survey Taker" />
+		<put-attribute name="tagline" value="Survey Taker" />
+		<put-attribute name="body" value="/WEB-INF/views/surveytaker/dashboard.jsp" />
 	</definition>
 	
 	<definition name="about" extends="baseLayout">
