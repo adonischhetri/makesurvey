@@ -10,7 +10,7 @@
 	
 	<a href="<c:url value="/survey" />"> Survey List</a> &nbsp;&nbsp;&nbsp; 
 	<a href="<c:url value="/survey/create" />"> Create Survey</a> &nbsp;&nbsp;&nbsp; 
-	<a href="<c:url value="/taker/add" />"> Add User</a> &nbsp;&nbsp;&nbsp; 
+	<a href="<c:url value="/taker/add" />"> Add User (Survey Taker)</a> &nbsp;&nbsp;&nbsp; 
 	
 	<hr />
 	<h3>Users List (Survey Takers)</h3>

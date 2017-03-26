@@ -4,9 +4,6 @@ INSERT INTO `Roles` (`userRoleId`, `type`) VALUES ('1', 'ADMIN');
 INSERT INTO `Roles` (`userRoleId`, `type`) VALUES ('2', 'CREATOR');
 INSERT INTO `Roles` (`userRoleId`, `type`) VALUES ('3', 'TAKER');
 
-/*
- * Admin usrname = admin, password = krishna
- * */
 
 LOCK TABLES `Address` WRITE;
 /*!40000 ALTER TABLE `Address` DISABLE KEYS */;
@@ -16,7 +13,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `User` WRITE;
 /*!40000 ALTER TABLE `User` DISABLE KEYS */;
-INSERT INTO `User` VALUES (3,'anonymousUser','admin@gmail.com',1,'Admin','Bhat','Bahadur','$2a$12$Vt6pk/9iXcRD8ZkwJN.nieyh/UoFujbVp0xp9fx7E3O/qcUx1uRyO','admin',1), (1,'anonymousUser','krishna1bhat@gmail.com',1,'Krishna','Bhat','Bahadur','$2a$12$Vt6pk/9iXcRD8ZkwJN.nieyh/UoFujbVp0xp9fx7E3O/qcUx1uRyO','krishna',1),(2,'krishna','manish@manish.com',1,'Manish','Karki','','$2a$12$mDg9ZLkamYgPDYDbVIHUVuSOTWvzpC7cHpubpKY.Gu4NEjowH2u5W','manish',2);
+INSERT INTO `User` VALUES (3,'anonymousUser','admin@gmail.com',1,'Admin','Bhat','Bahadur','$2a$12$SLFPvDvfqmD.F/L8GxlQeO8hEetstdsGZuNNLd/gFZMcylUL82SVe','admin',1), (1,'anonymousUser','krishna1bhat@gmail.com',1,'Krishna','Bhat','Bahadur','$2a$12$Vt6pk/9iXcRD8ZkwJN.nieyh/UoFujbVp0xp9fx7E3O/qcUx1uRyO','krishna',1),(2,'krishna','manish@manish.com',1,'Manish','Karki','','$2a$12$mDg9ZLkamYgPDYDbVIHUVuSOTWvzpC7cHpubpKY.Gu4NEjowH2u5W','manish',2);
 /*!40000 ALTER TABLE `User` ENABLE KEYS */;
 UNLOCK TABLES;
 

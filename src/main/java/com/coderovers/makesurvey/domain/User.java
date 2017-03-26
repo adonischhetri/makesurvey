@@ -46,10 +46,10 @@ public class User implements Serializable {
 	@NotEmpty
 	@Email(message = "{User.email.required}")
 	private String email;
-	@Size(min = 5, max = 14, message = "{User.userName.required}")
+	@Size(min = 2, max = 14, message = "{User.userName.required}")
 	private String userName;
 	@NotEmpty(message = "{required}")
-	@Size(min = 5, max = 60, message = "{User.password.required}")
+	@Size(min = 2, max = 60, message = "{User.password.required}")
 	private String password;
 	
 	@Column(name = "created_by")
