@@ -1,10 +1,10 @@
 package com.coderovers.makesurvey.domain;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -21,8 +21,6 @@ import javax.xml.bind.annotation.XmlTransient;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -53,6 +51,9 @@ public class User implements Serializable {
 	@NotEmpty(message = "{required}")
 	@Size(min = 5, max = 60, message = "{User.password.required}")
 	private String password;
+	
+	@Column(name = "created_by")
+	private User createdByUser;
 
 	@Transient
 	private String confirmPassword;
@@ -134,6 +135,14 @@ public class User implements Serializable {
 
 	public void setConfirmPassword(String confirmPassword) {
 		this.confirmPassword = confirmPassword;
+	}
+	
+	public User getcreatedByUser() {
+		return createdByUser;
+	}
+
+	public void setcreatedByUser(User createdByUser) {
+		this.createdByUser = createdByUser;
 	}
 
 	@XmlTransient

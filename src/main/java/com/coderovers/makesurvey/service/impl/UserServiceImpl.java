@@ -5,6 +5,7 @@ import java.util.Set;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -51,9 +52,12 @@ public class UserServiceImpl implements UserService {
 		if(roleRepository.findByType(role) != null){
 			Roles roles = roleRepository.findByType(role);
 			roleRepository.save(roles);
-//			roles.setType("CREATOR");
-			System.out.println(roles+" yo ho roles aako db bata");
 			roleSet.add(roles);
+		}
+		if(SecurityContextHolder.getContext().getAuthentication().getName() != null){
+			String name = SecurityContextHolder.getContext().getAuthentication().getName();
+			User createdByUser = userRepository.findByUserName(name);
+			user.setcreatedByUser(createdByUser);
 		}
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		user.setRoles(roleSet);
