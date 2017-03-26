@@ -60,18 +60,18 @@ public class SurveyHelperSimpleUrlAuthenticationSuccessHandler implements Authen
             if (grantedAuthority.getAuthority().equals("ROLE_CREATOR")) {
             	isCreator = true;
                 break;
-            } else if (grantedAuthority.getAuthority().equals("ROLE_TAKER")) {
+            } else if (grantedAuthority.getAuthority().equals("ROLE_ADMIN")) {
                 isAdmin = true;
                 break;
             }
         }
  
         if (isCreator) {
-            return "dashboard";
+            return "redirect:/dashboard";
         } else if (isAdmin) {
-            return "collectQuestionAnswer";
+            return "redirect:/collectQuestionAnswer";
         } else {
-            throw new IllegalStateException();
+        	return "redirect:/adminDashboard" ;
         }
     }
  
